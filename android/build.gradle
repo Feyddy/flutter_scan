@@ -36,6 +36,12 @@ android {
     buildToolsVersion '28.0.3'
 }
 
+// Set namespace for AGP 7.0+ while remaining compatible with older AGP
+def androidExt = project.extensions.findByName("android")
+if (androidExt != null && androidExt.hasProperty("namespace")) {
+    androidExt.namespace = "com.chavesgu.scan"
+}
+
 dependencies {
     implementation('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false }
     implementation 'androidx.appcompat:appcompat:1.2.0'
